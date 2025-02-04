@@ -1,0 +1,154 @@
+{
+    "info": {
+        "name": "To-Do List API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_postman_id": "12345-abcde-67890-fghij"
+    },
+    "item": [
+        {
+            "name": "Register & Auto Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/register",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "register"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password\"\n}"
+                }
+            },
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "var jsonData = pm.response.json();",
+                            "if (jsonData.token) {",
+                            "    pm.environment.set('authToken', jsonData.token);",
+                            "}"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Todos",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/todos",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "todos"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Todo",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/todos",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "todos"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"title\": \"New Task\",\n    \"description\": \"Task description\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Update Todo",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/todos/1",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "todos",
+                        "1"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"title\": \"Updated Task\",\n    \"description\": \"Updated description\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Delete Todo",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{authToken}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/todos/1",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "todos",
+                        "1"
+                    ]
+                }
+            }
+        }
+    ]
+}
