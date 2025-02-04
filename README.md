@@ -24,6 +24,7 @@ A simple To-Do List API built with Laravel 11, featuring JWT-based authenticatio
    ```bash
    cp .env.example .env
    php artisan key:generate
+   php artisan jwt:secret
    ```
 
 4. **Configure Database**  
