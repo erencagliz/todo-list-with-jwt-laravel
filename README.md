@@ -103,7 +103,7 @@ Authorization: Bearer your_jwt_token_here
 
 ## Postman Collection
 
-1. Import the [Postman Collection](todo_api_postman_collection.json).
+1. Import the [Postman Collection](postman-collection.json).
 2. Set the environment variable `base_url` to `http://localhost:8000`.
 3. Use the Register request to get a token, which will be automatically saved.
 4. Test all endpoints easily.
