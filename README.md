@@ -116,8 +116,3 @@ Authorization: Bearer your_jwt_token_here
 - MySQL
 - Postman
 
----
-
-## License
-This project is open-source and available under the [MIT License](LICENSE).
-
